@@ -9,32 +9,33 @@
 <body>
   <h1>Galería Contagiemos Arte</h1>
 
-  <div class="obra">
-    <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
-    <p>Chilly</p>
+  <div class="galeria">
+    <div class="obra">
+      <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
+      <p>Chilly</p>
+    </div>
+
+    <div class="obra">
+      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
+      <p>Árbol Rosa</p>
+    </div>
+
+    <div class="obra">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
+      <p>Manifestando mi Pasión</p>
+    </div>
+
+    <div class="obra">
+      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
+      <p>Pasión Animal</p>
+    </div>
   </div>
 
-  <div class="obra">
-    <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
-    <p>Árbol Rosa</p>
-  </div>
-
-  <div class="obra">
-    <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
-    <p>Manifestando mi Pasión</p>
-  </div>
-
-  <div class="obra">
-    <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
-    <p>Pasión Animal</p>
-  </div>
-
-  <!-- Modal oculto al inicio -->
+  <!-- Modal para imagen ampliada -->
   <div id="modal" onclick="this.style.display='none'">
     <img id="modal-img" src="" alt="Imagen ampliada" />
   </div>
 
-  <!-- Script para abrir modal -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const thumbnails = document.querySelectorAll(".thumbnail");
@@ -48,7 +49,6 @@
         });
       });
 
-      // Opcional: cerrar con tecla ESC
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
           modal.style.display = "none";
