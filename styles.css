@@ -3,9 +3,36 @@ body {
     text-align: center;
     background-color: #f0f0f0;
 }
-img {
-    max-width: 80%;
+
+img.thumbnail {
+    width: 200px;
     height: auto;
-    border: 5px solid #333;
+    border: 3px solid #333;
     margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+/* Estilo para el modal */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Imagen ampliada en el modal */
+#modal-img {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #fff;
 }
