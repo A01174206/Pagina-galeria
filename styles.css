@@ -1,60 +1,70 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Galería Contagiemos Arte</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <h1>Galería Contagiemos Arte</h1>
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
 
-  <div class="galeria">
-    <div class="obra">
-      <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
-      <p>Chilly</p>
-    </div>
+/* Título principal centrado */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    <div class="obra">
-      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
-      <p>Árbol Rosa</p>
-    </div>
+/* Contenedor de la galería: 2 columnas adaptables */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
 
-    <div class="obra">
-      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
-      <p>Manifestando mi Pasión</p>
-    </div>
+/* Cada bloque de obra */
+.obra {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
 
-    <div class="obra">
-      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
-      <p>Pasión Animal</p>
-    </div>
-  </div>
+/* Estilo de las imágenes miniatura */
+img.thumbnail {
+  width: 200px;
+  height: auto;
+  border: 3px solid #333;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
 
-  <!-- Modal para ver imagen en grande -->
-  <div id="modal" onclick="this.style.display='none'">
-    <img id="modal-img" src="" alt="Imagen ampliada" />
-  </div>
+/* Al pasar el mouse, la imagen crece un poco */
+img.thumbnail:hover {
+  transform: scale(1.05);
+}
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const thumbnails = document.querySelectorAll(".thumbnail");
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-img");
+/* Fondo oscuro del modal */
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
-      thumbnails.forEach(img => {
-        img.addEventListener("click", function () {
-          modal.style.display = "block";
-          modalImg.src = this.src;
-        });
-      });
-
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          modal.style.display = "none";
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+/* Imagen ampliada dentro del modal */
+#modal-img {
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  margin: 5% auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #fff;
+}
