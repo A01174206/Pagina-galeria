@@ -1,72 +1,36 @@
-/* Body y título */
 body {
   font-family: Arial, sans-serif;
+  text-align: center;
   background-color: #f0f0f0;
-  margin: 0;
-  padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Contenedor galería: grid de 2 columnas mínimo 250px */
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-/* Cada obra */
-.obra {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Imagen miniatura */
-.thumbnail {
+img.thumbnail {
   width: 200px;
-  max-width: 100%;
   height: auto;
   border: 3px solid #333;
-  border-radius: 8px;
+  margin-top: 20px;
   cursor: pointer;
-  margin-top: 10px;
   transition: transform 0.3s ease;
+  border-radius: 8px;
 }
 
-.thumbnail:hover {
-  transform: scale(1.05);
-}
-
-/* Modal de fondo oscuro */
+/* Estilo del modal */
 #modal {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 999;
   left: 0;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.8);
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Imagen dentro del modal */
 #modal-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90vw;
-  max-height: 80vh;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  margin: 5% auto;
   border-radius: 10px;
-  box-shadow: 0 0 20px white;
+  box-shadow: 0 0 20px #fff;
 }
