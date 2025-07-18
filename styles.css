@@ -1,68 +1,72 @@
-/* Estilo general */
+/* Body y título */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #f0f0f0;
   margin: 0;
   padding: 20px;
 }
 
-/* Título centrado */
 h1 {
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* Contenedor de galería con 2 columnas adaptables */
+/* Contenedor galería: grid de 2 columnas mínimo 250px */
 .galeria {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
-/* Estilo de cada obra */
+/* Cada obra */
 .obra {
-  background: white;
+  background-color: #fff;
+  border-radius: 10px;
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-/* Estilo de miniaturas */
+/* Imagen miniatura */
 .thumbnail {
   width: 200px;
+  max-width: 100%;
   height: auto;
-  border: 2px solid #333;
-  border-radius: 6px;
-  margin-top: 10px;
+  border: 3px solid #333;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
 }
 
 .thumbnail:hover {
   transform: scale(1.05);
 }
 
-/* Modal oscuro */
+/* Modal de fondo oscuro */
 #modal {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  cursor: pointer;
 }
 
-/* Imagen ampliada en el modal */
+/* Imagen dentro del modal */
 #modal-img {
-  display: block;
-  max-width: 90%;
-  max-height: 80%;
-  margin: 5% auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 80vh;
   border-radius: 10px;
-  box-shadow: 0 0 20px #fff;
+  box-shadow: 0 0 20px white;
 }
