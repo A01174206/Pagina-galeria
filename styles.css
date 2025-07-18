@@ -1,20 +1,51 @@
+/* Estilo general */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f0f0f0;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 20px;
 }
 
-img.thumbnail {
+/* Título centrado */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Contenedor de galería con 2 columnas adaptables */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Estilo de cada obra */
+.obra {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Estilo de miniaturas */
+.thumbnail {
   width: 200px;
   height: auto;
-  border: 3px solid #333;
-  margin-top: 20px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  margin-top: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 8px;
+  transition: transform 0.2s ease;
 }
 
-/* Estilo del modal */
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+/* Modal oscuro */
 #modal {
   display: none;
   position: fixed;
@@ -26,6 +57,7 @@ img.thumbnail {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Imagen ampliada en el modal */
 #modal-img {
   display: block;
   max-width: 90%;
