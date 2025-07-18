@@ -1,36 +1,60 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f0f0f0;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería Contagiemos Arte</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Galería Contagiemos Arte</h1>
 
-img.thumbnail {
-  width: 200px;
-  height: auto;
-  border: 3px solid #333;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 8px;
-}
+  <div class="galeria">
+    <div class="obra">
+      <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
+      <p>Chilly</p>
+    </div>
 
-/* Estilo del modal */
-#modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
+    <div class="obra">
+      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
+      <p>Árbol Rosa</p>
+    </div>
 
-#modal-img {
-  display: block;
-  max-width: 90%;
-  max-height: 80%;
-  margin: 5% auto;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #fff;
-}
+    <div class="obra">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
+      <p>Manifestando mi Pasión</p>
+    </div>
+
+    <div class="obra">
+      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
+      <p>Pasión Animal</p>
+    </div>
+  </div>
+
+  <!-- Modal para ver imagen en grande -->
+  <div id="modal" onclick="this.style.display='none'">
+    <img id="modal-img" src="" alt="Imagen ampliada" />
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-img");
+
+      thumbnails.forEach(img => {
+        img.addEventListener("click", function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          modal.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
