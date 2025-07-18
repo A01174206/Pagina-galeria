@@ -20,7 +20,7 @@
   </div>
 
   <div class="obra">
-    <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi pasión" class="thumbnail" />
+    <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
     <p>Manifestando mi Pasión</p>
   </div>
 
@@ -29,18 +29,30 @@
     <p>Pasión Animal</p>
   </div>
 
-  <!-- Modal para ver imagen ennn grande -->
+  <!-- Modal oculto al inicio -->
   <div id="modal" onclick="this.style.display='none'">
     <img id="modal-img" src="" alt="Imagen ampliada" />
   </div>
 
+  <!-- Script para abrir modal -->
   <script>
-    document.querySelectorAll('.thumbnail').forEach(function(img) {
-      img.addEventListener('click', function() {
-        var modal = document.getElementById('modal');
-        var modalImg = document.getElementById('modal-img');
-        modal.style.display = 'block';
-        modalImg.src = this.src;
+    document.addEventListener("DOMContentLoaded", function () {
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-img");
+
+      thumbnails.forEach(img => {
+        img.addEventListener("click", function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        });
+      });
+
+      // Opcional: cerrar con tecla ESC
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          modal.style.display = "none";
+        }
       });
     });
   </script>
