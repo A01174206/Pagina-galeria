@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeria Contagiemos Arte</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería Contagiemos Arte</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Galería Contagiemos arte</h1>
+  <h1>Galería Contagiemos Arte</h1>
+
   <div class="obra">
-    <img src="imagenes/chilly.jpg" alt="Chilly">
+    <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
     <p>Chilly</p>
   </div>
+
   <div class="obra">
-    <img src="imagenes/arbolrosa.jpg" alt="Arbol" />
-    <p>Título de la obra</p>
-  </div>
-  <div class="obra">
-    <img src="imagenes/manifestandomipasion.jpg" alt="Arbol" />
-    <p>Título de la obra</p>
-  </div>
-  <div class="obra">
-    <img src="imagenes/pasionanimal.jpg" alt="Arbol" />
-    <p>Título de la obra</p>
+    <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
+    <p>Árbol Rosa</p>
   </div>
 
+  <div class="obra">
+    <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi pasión" class="thumbnail" />
+    <p>Manifestando mi Pasión</p>
+  </div>
+
+  <div class="obra">
+    <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
+    <p>Pasión Animal</p>
+  </div>
+
+  <!-- Modal para ver imagen en grande -->
+  <div id="modal" onclick="this.style.display='none'">
+    <img id="modal-img" src="" alt="Imagen ampliada" />
+  </div>
+
+  <script>
+    document.querySelectorAll('.thumbnail').forEach(function(img) {
+      img.addEventListener('click', function() {
+        var modal = document.getElementById('modal');
+        var modalImg = document.getElementById('modal-img');
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+      });
+    });
+  </script>
 </body>
 </html>
