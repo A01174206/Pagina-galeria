@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Galería Contagiemos Arte</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Galería Contagiemos Arte</h1>
 
-  <!-- Menú de zoonas -->
+  <!-- Menú de zonas -->
   <div class="zona-selector">
     <label for="zona">Selecciona una zona:</label>
     <select id="zona" onchange="filtrarZona()">
-      <option value="todas">Todas</option>
+      <option value="todos">Todas</option>
       <option value="frida">Zona Frida Kahlo</option>
       <option value="vangogh">Zona Van Gogh</option>
       <option value="random">Zona Random</option>
@@ -21,57 +21,83 @@
   </div>
 
   <!-- Galería -->
-  <div class="galeria">
+  <div class="galeria" id="galeria">
+
+    <!-- Zona Frida Kahlo -->
     <div class="obra frida">
-      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="abrirModal(this)">
+      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="abrirModal(this)" />
       <p>Chilly</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/arbolrosa.jpg" alt="Arbol" onclick="abrirModal(this)">
+      <img src="imagenes/arbolrosa.jpg" alt="Arbol" onclick="abrirModal(this)" />
       <p>Arbol</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/manifestandomipasion.jpg" alt="Pasión" onclick="abrirModal(this)">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Pasión" onclick="abrirModal(this)" />
       <p>Manifestando mi pasión</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/pasionanimal.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/pasionanimal.jpg" alt="Animal" onclick="abrirModal(this)" />
       <p>Pasión animal</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/atulado.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/atulado.jpg" alt="A tu lado" onclick="abrirModal(this)" />
       <p>A tu lado</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/ballonpoppy.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/ballonpoppy.jpg" alt="Ballon puppy" onclick="abrirModal(this)" />
       <p>Ballon puppy</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/elritmoenelpapel.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/elritmoenelpapel.jpg" alt="El ritmo en el papel" onclick="abrirModal(this)" />
       <p>El ritmo en el papel</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/gratitud.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/gratitud.jpg" alt="Gratitud" onclick="abrirModal(this)" />
       <p>Gratitud</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/miradaalparaiso.jpg" alt="Animal" onclick="abrirModal(this)">
-      <p>Miradad al paraiso</p>
+      <img src="imagenes/miradaalparaiso.jpg" alt="Mirada al paraiso" onclick="abrirModal(this)" />
+      <p>Mirada al paraiso</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/primeraclase.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/primeraclase.jpg" alt="Primera clase" onclick="abrirModal(this)" />
       <p>Primera clase</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/zeus.jpg" alt="Animal" onclick="abrirModal(this)">
+      <img src="imagenes/zeus.jpg" alt="Zeus" onclick="abrirModal(this)" />
       <p>Zeus</p>
     </div>
-    
+
+    <!-- Zona Van Gogh (ejemplos, cambia por tus imágenes) -->
+    <div class="obra vangogh" style="display:none;">
+      <img src="imagenes/vangogh1.jpg" alt="Van Gogh 1" onclick="abrirModal(this)" />
+      <p>Van Gogh 1</p>
+    </div>
+    <div class="obra vangogh" style="display:none;">
+      <img src="imagenes/vangogh2.jpg" alt="Van Gogh 2" onclick="abrirModal(this)" />
+      <p>Van Gogh 2</p>
+    </div>
+    <div class="obra vangogh" style="display:none;">
+      <img src="imagenes/vangogh3.jpg" alt="Van Gogh 3" onclick="abrirModal(this)" />
+      <p>Van Gogh 3</p>
+    </div>
+
+    <!-- Zona Random (ejemplos vacíos, si quieres los agregas) -->
+    <div class="obra random" style="display:none;">
+      <img src="imagenes/random1.jpg" alt="Random 1" onclick="abrirModal(this)" />
+      <p>Random 1</p>
+    </div>
+    <div class="obra random" style="display:none;">
+      <img src="imagenes/random2.jpg" alt="Random 2" onclick="abrirModal(this)" />
+      <p>Random 2</p>
+    </div>
+
   </div>
 
   <!-- Modal -->
   <div id="modal" class="modal" onclick="cerrarModal()">
-    <img id="modal-img" src="" alt="Imagen ampliada">
+    <img id="modal-img" src="" alt="Imagen ampliada" />
   </div>
 
   <script>
@@ -89,8 +115,11 @@
     function filtrarZona() {
       const seleccion = document.getElementById('zona').value;
       const obras = document.querySelectorAll('.obra');
+
       obras.forEach(obra => {
-        if (seleccion === 'todas' || obra.classList.contains(seleccion)) {
+        if (seleccion === 'todos') {
+          obra.style.display = 'block';
+        } else if (obra.classList.contains(seleccion)) {
           obra.style.display = 'block';
         } else {
           obra.style.display = 'none';
