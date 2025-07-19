@@ -3,69 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galería de Arte</title>
+  <title>Galería Contagiemos Arte</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="menu-container">
-    <select id="zonaSelector" onchange="filtrarZona()">
+  <h1>Galería Contagiemos Arte</h1>
+
+  <!-- Menú de zonas -->
+  <div class="zona-selector">
+    <label for="zona">Selecciona una zona:</label>
+    <select id="zona" onchange="filtrarZona()">
       <option value="todos">Todos</option>
-      <option value="vangogh">Zona Van Gogh</option>
       <option value="frida">Zona Frida Kahlo</option>
+      <option value="vangogh">Zona Van Gogh</option>
       <option value="random">Zona Random</option>
     </select>
   </div>
 
-  <div class="galeria">
-    <!-- Zona Frida -->
-    <div class="imagen-card frida">
-      <img src="imagenes/frida1.jpg" alt="Frida 1" onclick="expandirImagen(this)">
+  <!-- Galería -->
+  <div class="galeria" id="galeria">
+    <div class="obra frida">
+      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="abrirModal(this)">
+      <p>Chilly</p>
     </div>
-    <div class="imagen-card frida">
-      <img src="imagenes/frida2.jpg" alt="Frida 2" onclick="expandirImagen(this)">
+    <div class="obra frida">
+      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" onclick="abrirModal(this)">
+      <p>Árbol Rosa</p>
     </div>
-
-    <!-- Zona Van Gogh -->
-    <div class="imagen-card vangogh">
-      <img src="imagenes/vangogh1.jpg" alt="Van Gogh 1" onclick="expandirImagen(this)">
+    <div class="obra frida">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi pasión" onclick="abrirModal(this)">
+      <p>Manifestando mi pasión</p>
     </div>
-    <div class="imagen-card vangogh">
-      <img src="imagenes/vangogh2.jpg" alt="Van Gogh 2" onclick="expandirImagen(this)">
-    </div>
-
-    <!-- Zona Random -->
-    <div class="imagen-card random">
-      <img src="imagenes/random1.jpg" alt="Random 1" onclick="expandirImagen(this)">
-    </div>
-    <div class="imagen-card random">
-      <img src="imagenes/random2.jpg" alt="Random 2" onclick="expandirImagen(this)">
+    <div class="obra frida">
+      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" onclick="abrirModal(this)">
+      <p>Pasión Animal</p>
     </div>
   </div>
 
-  <div id="overlay" onclick="cerrarImagen()">
-    <img id="imagenExpandida" src="">
+  <!-- Modal -->
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <span id="cerrar">&times;</span>
+    <img id="imagen-expandida" src="" alt="Imagen ampliada">
   </div>
 
+  <!-- Script -->
   <script>
-    function expandirImagen(img) {
-      const overlay = document.getElementById("overlay");
-      const imagenExpandida = document.getElementById("imagenExpandida");
-      imagenExpandida.src = img.src;
-      overlay.style.display = "flex";
+    function abrirModal(img) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('imagen-expandida');
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
     }
 
-    function cerrarImagen() {
-      document.getElementById("overlay").style.display = "none";
+    function cerrarModal() {
+      document.getElementById('modal').style.display = 'none';
     }
 
     function filtrarZona() {
-      const zona = document.getElementById("zonaSelector").value;
-      const imagenes = document.querySelectorAll(".imagen-card");
-      imagenes.forEach(imagen => {
-        if (zona === "todos" || imagen.classList.contains(zona)) {
-          imagen.style.display = "block";
+      const zona = document.getElementById('zona').value;
+      const obras = document.querySelectorAll('.obra');
+      obras.forEach(obra => {
+        if (zona === 'todos' || obra.classList.contains(zona)) {
+          obra.style.display = 'block';
         } else {
-          imagen.style.display = "none";
+          obra.style.display = 'none';
         }
       });
     }
