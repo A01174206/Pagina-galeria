@@ -4,63 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Galería Contagiemos Arte</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Galería Contagiemos Arte</h1>
 
-  <!-- Menú de zonas -->
-  <div class="zona-selector">
-    <label for="zona">Selecciona una zona:</label>
-    <select id="zona" onchange="filtrarZona()">
-      <option value="todos">Todos</option>
-      <option value="frida">Zona Frida Kahlo</option>
-      <option value="vangogh">Zona Van Gogh</option>
-      <option value="random">Zona Random</option>
-    </select>
-  </div>
+  <label for="zona-select">Selecciona una zona:</label>
+  <select id="zona-select" onchange="filtrarZona()">
+    <option value="todos">Todos</option>
+    <option value="frida">Zona Frida Kahlo</option>
+    <!-- futuras opciones -->
+    <!-- <option value="vangogh">Zona Van Gogh</option> -->
+    <!-- <option value="random">Zona Random</option> -->
+  </select>
 
-  <!-- Galería -->
-  <div class="galeria" id="galeria">
+  <div id="galeria">
     <div class="obra frida">
-      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="abrirModal(this)">
+      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="expandir(this)">
       <p>Chilly</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" onclick="abrirModal(this)">
+      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" onclick="expandir(this)">
       <p>Árbol Rosa</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi pasión" onclick="abrirModal(this)">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Manifiesto" onclick="expandir(this)">
       <p>Manifestando mi pasión</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" onclick="abrirModal(this)">
+      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" onclick="expandir(this)">
       <p>Pasión Animal</p>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal" onclick="cerrarModal()">
+  <div id="modal" onclick="cerrarModal()">
     <span id="cerrar">&times;</span>
-    <img id="imagen-expandida" src="" alt="Imagen ampliada">
+    <img id="imagen-expandida" src="" alt="">
   </div>
 
-  <!-- Script -->
   <script>
-    function abrirModal(img) {
+    function expandir(img) {
       const modal = document.getElementById('modal');
       const modalImg = document.getElementById('imagen-expandida');
-      modal.style.display = 'flex';
+      modal.style.display = "flex";
       modalImg.src = img.src;
     }
 
     function cerrarModal() {
-      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal').style.display = "none";
     }
 
     function filtrarZona() {
-      const zona = document.getElementById('zona').value;
+      const zona = document.getElementById('zona-select').value;
       const obras = document.querySelectorAll('.obra');
       obras.forEach(obra => {
         if (zona === 'todos' || obra.classList.contains(zona)) {
