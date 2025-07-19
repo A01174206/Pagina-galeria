@@ -1,53 +1,64 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
   text-align: center;
+  margin: 0;
   padding: 20px;
+  background-color: #f4f4f4;
 }
 
 h1 {
   margin-bottom: 20px;
 }
 
-select {
+.zona-selector {
   margin-bottom: 30px;
-  padding: 10px;
-  font-size: 16px;
 }
 
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .obra {
-  background-color: #fff;
+  background: white;
+  border: 1px solid #ccc;
   padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  max-width: 300px;
-  transition: transform 0.3s;
-}
-
-.obra:hover {
-  transform: scale(1.03);
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
 
 .obra img {
   width: 100%;
-  height: auto;
+  max-width: 180px;
   cursor: pointer;
-  border: 4px solid #333;
-  border-radius: 6px;
-  transition: transform 0.3s;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
 .obra img:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
-.hidden {
+/* Modal */
+.modal {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
 }
