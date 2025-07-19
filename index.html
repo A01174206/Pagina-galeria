@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Galería Contagiemos Arte</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Galería Contagiemos Arte</h1>
 
-  <div class="obra">
-    <img src="imagenes/chilly.jpg" alt="Chilly" class="thumbnail" />
-    <p>Chilly</p>
+  <select id="zonaFiltro">
+    <option value="todos">Todos</option>
+    <option value="frida">Zona Frida Kahlo</option>
+    <option value="vangogh">Zona Van Gogh</option>
+    <option value="random">Zona Random</option>
+  </select>
+
+  <div class="galeria">
+    <!-- Zona Frida Kahlo -->
+    <div class="obra zona-frida">
+      <img src="imagenes/chilly.jpg" alt="Chilly">
+      <p>Chilly</p>
+    </div>
+    <div class="obra zona-frida">
+      <img src="imagenes/arbolrosa.jpg" alt="Arbol rosa">
+      <p>Arbol Rosa</p>
+    </div>
+    <div class="obra zona-frida">
+      <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi pasión">
+      <p>Manifestando mi pasión</p>
+    </div>
+    <div class="obra zona-frida">
+      <img src="imagenes/pasionanimal.jpg" alt="Pasión animal">
+      <p>Pasión Animal</p>
+    </div>
+
+    <!-- Puedes agregar más zonas así -->
+    <!-- Ejemplo zona-van-gogh -->
+    <!--
+    <div class="obra zona-vangogh">
+      <img src="imagenes/vangogh1.jpg" alt="Obra Van Gogh">
+      <p>Van Gogh 1</p>
+    </div>
+    -->
+
   </div>
 
-  <div class="obra">
-    <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" class="thumbnail" />
-    <p>Árbol Rosa</p>
-  </div>
-
-  <div class="obra">
-    <img src="imagenes/manifestandomipasion.jpg" alt="Manifestando mi Pasión" class="thumbnail" />
-    <p>Manifestando mi Pasión</p>
-  </div>
-
-  <div class="obra">
-    <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" class="thumbnail" />
-    <p>Pasión Animal</p>
-  </div>
-
-  <div class="obra">
-    <img src="imagenes/atulado.jpg" alt="A tu lado" class="thumbnail" />
-    <p>A tu lado</p>
-  </div>
-  
-   <div class="obra">
-    <img src="imagenes/ballonpoppy.jpg" alt="Ballon Puppy" class="thumbnail" />
-    <p>Ballon Puppy</p>
-  </div>
-
-  <!-- Modal oculto al inicio -->
-  <div id="modal" onclick="this.style.display='none'">
-    <img id="modal-img" src="" alt="Imagen ampliada" />
-  </div>
-
-  <!-- Script para abriir modal -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const thumbnails = document.querySelectorAll(".thumbnail");
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-img");
+    const filtro = document.getElementById('zonaFiltro');
+    const obras = document.querySelectorAll('.obra');
 
-      thumbnails.forEach(img => {
-        img.addEventListener("click", function () {
-          modal.style.display = "block";
-          modalImg.src = this.src;
-        });
-      });
+    filtro.addEventListener('change', () => {
+      const seleccion = filtro.value;
 
-      // Opcional: cerrar con tecla ESC
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          modal.style.display = "none";
+      obras.forEach(obra => {
+        obra.classList.remove('hidden');
+
+        if (seleccion === 'frida' && !obra.classList.contains('zona-frida')) {
+          obra.classList.add('hidden');
+        } else if (seleccion === 'vangogh' && !obra.classList.contains('zona-vangogh')) {
+          obra.classList.add('hidden');
+        } else if (seleccion === 'random' && !obra.classList.contains('zona-random')) {
+          obra.classList.add('hidden');
         }
       });
     });
