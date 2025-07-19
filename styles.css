@@ -1,79 +1,64 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #f4f4f4;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 h1 {
-  margin: 20px 0;
-  color: #333;
-}
-
-#zona-select {
   margin-bottom: 20px;
-  padding: 5px 10px;
-  font-size: 16px;
 }
 
-#galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.zona-selector {
+  margin-bottom: 30px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  padding: 0 10px;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .obra {
-  width: 45%;
-  max-width: 300px;
-  background-color: #fff;
+  background: white;
   border: 1px solid #ccc;
   padding: 10px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
 
 .obra img {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  max-width: 180px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
-.obra p {
-  margin-top: 10px;
-  color: #555;
+.obra img:hover {
+  transform: scale(1.05);
 }
 
 /* Modal */
-#modal {
+.modal {
   display: none;
   position: fixed;
-  z-index: 1000;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.8);
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  z-index: 999;
 }
 
-#modal img {
+.modal img {
   max-width: 90%;
-  max-height: 80%;
-  border: 5px solid white;
-  border-radius: 10px;
-}
-
-#cerrar {
-  color: white;
-  font-size: 30px;
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  cursor: pointer;
+  max-height: 90%;
+  border-radius: 8px;
 }
