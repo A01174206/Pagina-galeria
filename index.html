@@ -9,56 +9,59 @@
 <body>
   <h1>Galería Contagiemos Arte</h1>
 
-  <label for="zona-select">Selecciona una zona:</label>
-  <select id="zona-select" onchange="filtrarZona()">
-    <option value="todos">Todos</option>
-    <option value="frida">Zona Frida Kahlo</option>
-    <!-- futuras opciones -->
-    <!-- <option value="vangogh">Zona Van Gogh</option> -->
-    <!-- <option value="random">Zona Random</option> -->
-  </select>
+  <!-- Menú de zoonas -->
+  <div class="zona-selector">
+    <label for="zona">Selecciona una zona:</label>
+    <select id="zona" onchange="filtrarZona()">
+      <option value="todas">Todas</option>
+      <option value="frida">Zona Frida Kahlo</option>
+      <option value="vangogh">Zona Van Gogh</option>
+      <option value="random">Zona Random</option>
+    </select>
+  </div>
 
-  <div id="galeria">
+  <!-- Galería -->
+  <div class="galeria">
     <div class="obra frida">
-      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="expandir(this)">
+      <img src="imagenes/chilly.jpg" alt="Chilly" onclick="abrirModal(this)">
       <p>Chilly</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/arbolrosa.jpg" alt="Árbol Rosa" onclick="expandir(this)">
-      <p>Árbol Rosa</p>
+      <img src="imagenes/arbolrosa.jpg" alt="Arbol" onclick="abrirModal(this)">
+      <p>Título de la obra</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/manifestandomipasion.jpg" alt="Manifiesto" onclick="expandir(this)">
-      <p>Manifestando mi pasión</p>
+      <img src="imagenes/manifestandomipasion.jpg" alt="Pasión" onclick="abrirModal(this)">
+      <p>Título de la obra</p>
     </div>
     <div class="obra frida">
-      <img src="imagenes/pasionanimal.jpg" alt="Pasión Animal" onclick="expandir(this)">
-      <p>Pasión Animal</p>
+      <img src="imagenes/pasionanimal.jpg" alt="Animal" onclick="abrirModal(this)">
+      <p>Título de la obra</p>
     </div>
   </div>
 
-  <div id="modal" onclick="cerrarModal()">
-    <span id="cerrar">&times;</span>
-    <img id="imagen-expandida" src="" alt="">
+  <!-- Modal -->
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <img id="modal-img" src="" alt="Imagen ampliada">
   </div>
 
   <script>
-    function expandir(img) {
+    function abrirModal(img) {
       const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('imagen-expandida');
-      modal.style.display = "flex";
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = 'flex';
       modalImg.src = img.src;
     }
 
     function cerrarModal() {
-      document.getElementById('modal').style.display = "none";
+      document.getElementById('modal').style.display = 'none';
     }
 
     function filtrarZona() {
-      const zona = document.getElementById('zona-select').value;
+      const seleccion = document.getElementById('zona').value;
       const obras = document.querySelectorAll('.obra');
       obras.forEach(obra => {
-        if (zona === 'todos' || obra.classList.contains(zona)) {
+        if (seleccion === 'todas' || obra.classList.contains(seleccion)) {
           obra.style.display = 'block';
         } else {
           obra.style.display = 'none';
